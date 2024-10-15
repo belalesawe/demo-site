@@ -1,0 +1,30 @@
+#accessories i,.angle_arrow i,.articale_header h2 a:hover,.article_meta ul li a:hover,.blog-content h5 a:hover,.blog-info-box li a:hover,.btn-link,.btn.outline,.car-title-m h6 a:hover,.categories_list ul li a:hover,.categories_list ul li a:hover:after,.checkbox input[type=checkbox]:checked+label:before,.compare_info table td i,.compare_info table th i,.contact-info a:hover,.contact_detail li a:hover,.control-label span,.dealer_contact_info a:hover,.dealers_listing .dealer_info h5 a:hover,.error_text_m h2,.featured-car-content>h6 a:hover,.footer-top ul li a:hover,.footer_widget ul li a:hover,.get-intouch a:hover,.header_search button:hover,.header_widgets a:hover,.inventory_info_list ul li i,.listing_detail_head .price_info p,.listing_other_info button:hover,.main_features ul li p,.my_vehicles_list ul.vehicle_listing li a:hover,.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a:focus,.navbar-default .navbar-nav>.open>a:hover,.navbar-default .navbar-nav>li.active a,.navbar-default .navbar-nav>li:focus a,.navbar-default .navbar-nav>li:hover a,.popular_post_title a:hover,.price,.pricing_info .price,.product-listing-content h5 a:hover,.radio input[type=radio]:checked+label:before,.search_btn,.share_article ul li,.social-follow a:hover,.team_more_info p a:hover,.text-primary,.widget_heading i,a{color:#fa2837;fill:#fa2837}.btn-link:hover,a:focus,a:hover{color:#ff0012;fill:#ff0012}#other_info,#testimonial-slider .owl-pagination .owl-page.active,.add_compare .checkbox,.back-top a,.btn,.btn.outline:focus,.btn.outline:hover,.featured-icon,.fun-facts-m,.label-icon,.label_icon,.nav-tabs>li a:focus,.nav-tabs>li a:hover,.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover,.navbar-default .navbar-toggle .icon-bar,.navbar-default .navbar-toggle:focus,.navbar-default .navbar-toggle:hover,.navbar-nav>li>.dropdown-menu,.owl-pagination .owl-page.active,.pagination ul li.current,.pagination ul li:hover,.recent-tab .nav.nav-tabs li.active a,.search_other,.search_other_inventory,.share_article ul li:hover,.social-follow.footer-social a:hover,.tag_list ul li a:hover,.td_divider,.team_more_info ul li a:hover,.vs{background:#fa2837 none repeat scroll 0 0;fill:#fa2837}#other_info:hover,.btn:focus,.btn:hover,.search_other:hover{background-color:#c60210;fill:#fb4d59}.btn.outline,.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover,.navbar-default .navbar-toggle,.owl-buttons div,.page-header,.radio label:before,.share_article ul li,.social-follow a:hover,.social-follow.footer-social a:hover,.tag_list ul li a:hover,blockquote{border-color:#fa2837}.recent-tab .nav.nav-tabs li.active::after{border-color:#fa2837 transparent transparent}.td_divider:after{border-color:transparent transparent transparent #fa2837}.navbar-nav>li>.dropdown-menu li{border-bottom:1px solid #e21625}@media (max-width:767px){.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{color:#fa2837}}
+
+.topnav2, .btn, .nav-tabs > li > a.active, .nav-tabs > li > a.active:focus, .nav-tabs > li > a.active:hover, .recent-tab .nav.nav-tabs li.active a, .fun-facts-m, .featured-icon, .owl-pagination .owl-page.active, #testimonial-slider .owl-pagination .owl-page.active, .social-follow.footer-social a:hover, .back-top a, .team_more_info ul li a:hover, .tag_list ul li a:hover, .pagination ul li.current, .pagination ul li:hover, .btn.outline:hover, .btn.outline:focus, .share_article ul li:hover, .nav-tabs > li a.active:hover, .nav-tabs > li a.active:focus, .label-icon, .navbar-default .navbar-toggle .icon-bar, .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover, .label_icon, .navbar-nav > li > .dropdown-menu, .add_compare .checkbox, .search_other, .vs, .td_divider, .search_other_inventory, #other_info, .main_bg, .slider .slider-handle, .slider .slider-selection, .primary-bg, .listing_detail_wrap .nav-tabs > li > a.active, .listing_detail_wrap .nav-tabs > li:hover a {
+    background: #fa2837 none repeat scroll 0 0 !important;
+    fill: #fa2837;
+}
+.topnav {
+    overflow: hidden;
+    background-color: #de302f;
+}
+li.button {
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    display: block;
+    background: linear-gradient(to right, #fa2837 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+}
+a.button {
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    display: block;
+    background: linear-gradient(to right, #fa2837 49%, #ffffff1f 48%);
+    background-size: 205% 100%;
+    background-position: right bottom;
+    transition: all .5s ease-out;
+    color: #fff;
+    border-radius: 50%;
+}
