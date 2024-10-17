@@ -194,11 +194,11 @@
         const path = "/chat";
     
         const requestData = {
-            "operator_name": "Maria",
-            "chat_id": 6101641,
-            "customer_response": userMessage,
-            "account_id": 101487,
-            "vdp_vin": ""
+            operator_name: "Maria",
+            chat_id: 123470,
+            customer_response: userMessage,
+            account_id: 101487,
+            vdp_vin: ""
         };
     
         const timestamp = Math.floor(Date.now() / 1000).toString();
