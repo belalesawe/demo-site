@@ -201,23 +201,26 @@
             vdp_vin: ""
         };
     
+        // Generate timestamp (in seconds)
         const timestamp = Math.floor(Date.now() / 1000).toString();
         const secretKey = "4d2e8f3177e9b55a8e743b8b92f3c90c4f5a1bbd6e3f2c7a9e5483d9c45f0a74"; // Replace with your shared secret key
     
-        // Generate the signature using the updated function
+        // Generate the signature
         const compactRequestData = JSON.stringify(requestData, null, 0);  // JSON.stringify without whitespace
-        const signature = generateSignature(secretKey, compactRequestData, timestamp, method, path);
+        const messageToSign = compactRequestData + timestamp + path + method;
+        const signature = generateSignature(secretKey, messageToSign);
     
-        console.log("Generated Signature Hash:", signature);
-        console.log("Generated timestamp:", timestamp);
+        console.log("Request Data:", JSON.stringify(requestData));
+        console.log("Generated Signature:", signature);
+        console.log("Timestamp:", timestamp);        
     
+        // Make the API request with the necessary headers
         fetch(chatbotAPI, {
             method: method,
             headers: {
                 "Content-Type": "application/json",
                 "X_BOTIVA_API_HASH": signature,
-                "X_BOTIVA_TIMESTAMP": timestamp,
-                "User-Agent": "Botiva-Secure-Request/2.0"
+                "X_BOTIVA_TIMESTAMP": timestamp
             },
             body: JSON.stringify(requestData)
         })
@@ -254,10 +257,7 @@
         });
     }
     
-    function generateSignature(secretKey, payload, timestamp, method, path) {
-        // Concatenate payload, timestamp, path, and method to create the message to sign
-        const message = payload + timestamp + path + method;
-    
+    function generateSignature(secretKey, message) {
         // Create HMAC signature using SHA-256 and the secret key, then convert it to hexadecimal
         const hash = CryptoJS.HmacSHA256(message, secretKey);
         const signatureHex = hash.toString(CryptoJS.enc.Hex);
