@@ -190,20 +190,34 @@
 
     function fetchChatbotResponse(userMessage) {
         const chatbotAPI = "http://localhost:5000/chat";
+        const method = "POST";
+        const path = "/chat";
+    
         const requestData = {
-            chat_id: 123470,  // Replace with actual chat ID
-            customer_response: userMessage,
-            account_id: 101487,  // Replace with actual account ID
-            operator_name: "Maria",  // Replace with actual operator name
-            vdp_vin: "1HGCM82633A123456"  // Replace with actual vehicle VIN
+            "operator_name": "Maria",
+            "chat_id": 6101641,
+            "customer_response": userMessage,
+            "account_id": 101487,
+            "vdp_vin": ""
         };
     
+        const timestamp = Math.floor(Date.now() / 1000).toString();
+        const secretKey = "4d2e8f3177e9b55a8e743b8b92f3c90c4f5a1bbd6e3f2c7a9e5483d9c45f0a74"; // Replace with your shared secret key
+    
+        // Generate the signature using the updated function
+        const compactRequestData = JSON.stringify(requestData, null, 0);  // JSON.stringify without whitespace
+        const signature = generateSignature(secretKey, compactRequestData, timestamp, method, path);
+    
+        console.log("Generated Signature Hash:", signature);
+        console.log("Generated timestamp:", timestamp);
+    
         fetch(chatbotAPI, {
-            method: "POST",
+            method: method,
             headers: {
                 "Content-Type": "application/json",
-                "accept": "application/vnd.coxauto.v1+json",
-                "accept-Encoding": "application/gzip"
+                "X_BOTIVA_API_HASH": signature,
+                "X_BOTIVA_TIMESTAMP": timestamp,
+                "User-Agent": "Botiva-Secure-Request/2.0"
             },
             body: JSON.stringify(requestData)
         })
@@ -216,28 +230,21 @@
         .then(data => {
             hideTypingIndicator();
             data.response.forEach((response, index) => {
-            // If one response
-            if (index === 0) {
-                // First Case - Single Response
-                // Show the typing indicator
-                showTypingIndicator();
-                // Wait 3000ms and then hide the typing indicator and show the response
-                setTimeout(() => {
-                    hideTypingIndicator();
-                    addMessage("Maria", data.response[0], "agent");
-                }, 2000);
-            } else {
-                // If multiple responses
-                setTimeout(() => {
-                    // Show the typing indicator after an initial delay
+                if (index === 0) {
                     showTypingIndicator();
-                    // Delay again before showing the response and hiding the typing indicator
                     setTimeout(() => {
                         hideTypingIndicator();
-                        addMessage("Maria", response, "agent");
-                    }, 4000);
-                }, 10000);
-            }
+                        addMessage("Maria", data.response[0], "agent");
+                    }, 2000);
+                } else {
+                    setTimeout(() => {
+                        showTypingIndicator();
+                        setTimeout(() => {
+                            hideTypingIndicator();
+                            addMessage("Maria", response, "agent");
+                        }, 4000);
+                    }, 10000);
+                }
             });
         })
         .catch(error => {
@@ -246,6 +253,17 @@
             addMessage("Maria", "Sorry, something went wrong.", "agent");
         });
     }
+    
+    function generateSignature(secretKey, payload, timestamp, method, path) {
+        // Concatenate payload, timestamp, path, and method to create the message to sign
+        const message = payload + timestamp + path + method;
+    
+        // Create HMAC signature using SHA-256 and the secret key, then convert it to hexadecimal
+        const hash = CryptoJS.HmacSHA256(message, secretKey);
+        const signatureHex = hash.toString(CryptoJS.enc.Hex);
+    
+        return signatureHex;
+    }    
     
     function showTypingIndicator() {
         const typingIndicator = document.getElementById("typing-indicator");
